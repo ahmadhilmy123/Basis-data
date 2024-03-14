@@ -1,0 +1,169 @@
+C:\Users\Administrator>cd..
+
+C:\Users>cd..
+
+C:\>cd bin
+The system cannot find the path specified.
+
+C:\>cd \xampp\mysql
+
+C:\xampp\mysql>cd bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 17
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use ti05
+Database changed
+MariaDB [ti05]> show tables;
++----------------+
+| Tables_in_ti05 |
++----------------+
+| jabatan        |
+| pegawai        |
++----------------+
+2 rows in set (0.001 sec)
+
+MariaDB [ti05]> INSERT INTO jabatan VALUES
+    -> ('','Manager'),
+    -> ('','Direktur'),
+    -> ('','Staff');
+Query OK, 3 rows affected, 3 warnings (0.075 sec)
+Records: 3  Duplicates: 0  Warnings: 3
+
+MariaDB [ti05]> SELECT * FROM jabatan;
++----+----------+
+| id | nama     |
++----+----------+
+|  2 | Direktur |
+|  1 | Manager  |
+|  3 | Staff    |
++----+----------+
+3 rows in set (0.000 sec)
+
+MariaDB [ti05]> SELECT * FROM jabatan;
++----+----------+
+| id | nama     |
++----+----------+
+|  2 | Direktur |
+|  1 | Manager  |
+|  3 | Staff    |
++----+----------+
+3 rows in set (0.001 sec)
+
+MariaDB [ti05]> INSERT INTO jabatan VALUES
+    -> ('','Supervisor');
+Query OK, 1 row affected, 1 warning (0.013 sec)
+
+MariaDB [ti05]> SELECT * FROM jabatan;
++----+------------+
+| id | nama       |
++----+------------+
+|  2 | Direktur   |
+|  1 | Manager    |
+|  3 | Staff      |
+|  4 | Supervisor |
++----+------------+
+4 rows in set (0.000 sec)
+
+MariaDB [ti05]> Desc pegawai
+    -> ;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nip        | varchar(30) | NO   | UNI | NULL    |                |
+| nama       | varchar(30) | NO   |     | NULL    |                |
+| email      | varchar(30) | YES  |     | NULL    |                |
+| jabatan_id | int(11)     | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.034 sec)
+
+MariaDB [ti05]> INSERT INTO pegawai
+    -> (nip, nama, email, jabatan_id)
+    -> VALUES
+    -> ('2022','ahmad','ahmad@gmail.com','1994-01-01',1);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [ti05]> INSERT INTO pegawai
+    -> (nip, nama, email, jabatan_id)
+    -> VALUES
+    -> ('2022','ahmad','ahmad@gmail.com',1);
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [ti05]> SELECT * FROM jabatan;
++----+------------+
+| id | nama       |
++----+------------+
+|  2 | Direktur   |
+|  1 | Manager    |
+|  3 | Staff      |
+|  4 | Supervisor |
++----+------------+
+4 rows in set (0.000 sec)
+
+MariaDB [ti05]> SELECT * FROM pegawai;
++----+------+-------+-----------------+------------+
+| id | nip  | nama  | email           | jabatan_id |
++----+------+-------+-----------------+------------+
+|  1 | 2022 | ahmad | ahmad@gmail.com |          1 |
++----+------+-------+-----------------+------------+
+1 row in set (0.000 sec)
+
+MariaDB [ti05]> UPDATE jabatan SET name = 'Kepala gudang'
+    -> WHERE id = 4;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+MariaDB [ti05]> UPDATE jabatan SET name = 'Kepala gudang'
+    -> ;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+MariaDB [ti05]> UPDATE jabatan SET nama = 'Kepala gudang'
+    -> WHERE id = 4;
+Query OK, 1 row affected (0.013 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [ti05]> SELECT * FROM jabatan;
++----+---------------+
+| id | nama          |
++----+---------------+
+|  2 | Direktur      |
+|  4 | Kepala gudang |
+|  1 | Manager       |
+|  3 | Staff         |
++----+---------------+
+4 rows in set (0.001 sec)
+
+MariaDB [ti05]> SELECT * FROM jabatan;
++----+---------------+
+| id | nama          |
++----+---------------+
+|  2 | Direktur      |
+|  4 | Kepala gudang |
+|  1 | Manager       |
+|  3 | Staff         |
++----+---------------+
+4 rows in set (0.000 sec)
+
+MariaDB [ti05]> VALUES
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [ti05]> DELETE jabatan WHERE id = 4;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE id = 4' at line 1
+MariaDB [ti05]> DELETE FORM jabatan WHERE id = 4;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'jabatan WHERE id = 4' at line 1
+MariaDB [ti05]> DELETE FROM jabatan WHERE id = 4;
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [ti05]> SELECT * FROM jabatan;
++----+----------+
+| id | nama     |
++----+----------+
+|  2 | Direktur |
+|  1 | Manager  |
+|  3 | Staff    |
++----+----------+
+3 rows in set (0.000 sec)
