@@ -1,3 +1,4 @@
+
 C:\Users\Administrator>cd..
 
 C:\Users>cd /xampp/mysql
@@ -115,6 +116,38 @@ MariaDB [db_tokoti05]>
 +--------+-------------------+------------+------------+
 22 rows in set (0.001 sec)
 
+MariaDB [db_tokoti05]> SELECT nama, harga_jual, FROM produk
+    -> WHERE harga_jual < 5000000 AND harga_jual > 500000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM produk
+WHERE harga_jual < 5000000 AND harga_jual > 500000' at line 1
+MariaDB [db_tokoti05]> SELECT nama, harga_jual, FROM produk
+    -> WHERE harga_jual < 5000000 AND harga_jual > 500000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM produk
+WHERE harga_jual < 5000000 AND harga_jual > 500000' at line 1
+MariaDB [db_tokoti05]> SELECT nama, harga_jual, FROM produk
+    -> WHERE harga_jual < 5000000 OR harga_jual > 500000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM produk
+WHERE harga_jual < 5000000 OR harga_jual > 500000' at line 1
+MariaDB [db_tokoti05]> SELECT nama, harga_jual, FROM produk
+    -> WHERE harga_jual < 5000000 AND harga_jual > 500000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM produk
+WHERE harga_jual < 5000000 AND harga_jual > 500000' at line 1
+MariaDB [db_tokoti05]> SELECT nama, harga_jual, FROM produk
+    -> WHERE harga_jual  < 5000000 AND harga_jual >= 500000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM produk
+WHERE harga_jual  < 5000000 AND harga_jual >= 500000' at line 1
+MariaDB [db_tokoti05]> SELECT nama, harga_jual, FROM produk
+    -> WHERE harga_jual < 5000000 AND harga_jual > 500000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM produk
+WHERE harga_jual < 5000000 AND harga_jual > 500000' at line 1
+MariaDB [db_tokoti05]> SELECT nama, harga_jual, FROM produk
+    -> WHERE harga_jual < 5000000 AND harga_beli > 500000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM produk
+WHERE harga_jual < 5000000 AND harga_beli > 500000' at line 1
+MariaDB [db_tokoti05]> SELECT nama, harga_jual, FROM produk
+    -> WHERE harga_beli < 5000000 AND harga_jual > 500000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM produk
+WHERE harga_beli < 5000000 AND harga_jual > 500000' at line 1
 MariaDB [db_tokoti05]> SELECT id, nama FROM pelanggan WHERE id
     -> IN(2,4,6);
 +----+---------------+
@@ -155,3 +188,147 @@ MariaDB [db_tokoti05]> SELECT kode, nama, tgl_lahir FROM pelanggan
 | C002  | Pandan Wangi       | 1950-01-01 |
 +-------+--------------------+------------+
 12 rows in set (0.012 sec)
+
+MariaDB [db_tokoti05]> SELECT nama, harga_jual FROM produk
+    -> ORDER BY harga_jual DESC LIMIT 4;
++-------------------+------------+
+| nama              | harga_jual |
++-------------------+------------+
+| Televisi 21 inchs |   50500000 |
+| Televisi 24 inc   |   50500000 |
+| Televisi 23 inc   |   50500000 |
+| Televisi 22 inc`  |   50500000 |
++-------------------+------------+
+4 rows in set (0.001 sec)
+
+MariaDB [db_tokoti05]> SELECT nama, harga_jual FROM produk
+    -> ORDER BY harga_jual DESC LIMIT 2;
++-------------------+------------+
+| nama              | harga_jual |
++-------------------+------------+
+| Televisi 21 inchs |   50500000 |
+| Televisi 22 inc`  |   50500000 |
++-------------------+------------+
+2 rows in set (0.000 sec)
+
+MariaDB [db_tokoti05]> SELECT nama, harga_jual FROM produk
+    -> WHERE harga_jual < 5000000 OR harga_jual > 500000;
++-------------------+------------+
+| nama              | harga_jual |
++-------------------+------------+
+| Televisi 21 inchs |   50500000 |
+| Televisi 40 inch  |    7440000 |
+| Kulkas 2 pintu    |    4680000 |
+| Meja Makan        |     600000 |
+| Teh Kotak         |       3500 |
+| PC Desktop HP     |    9984000 |
+| Teh Botol         |       2500 |
+| Notebook Acer S   |   11232000 |
+| Notebook Lenovo   |   12480000 |
+| Laptop Lenovo     |   16000000 |
+| Kopi              |      30000 |
+| Teh Sosro 2       |      15000 |
+| Laptop Asus       |    5000000 |
+| Televisi 22 inc`  |   50500000 |
+| Televisi 23 inc   |   50500000 |
+| Televisi 24 inc   |   50500000 |
+| Televisi 25 inc   |   50500000 |
+| Televisi 27 inc   |   50500000 |
+| Televisi 28 inc   |   50500000 |
+| Televisi 29 inc   |   50500000 |
+| Teh Pucuk         |       5000 |
+| Teh Pucuk2        |       5000 |
++-------------------+------------+
+22 rows in set (0.000 sec)
+
+MariaDB [db_tokoti05]> SELECT nama, harga_jual FROM produk
+    -> ORDER BY harga_jual DESC LIMIT 2;
++-------------------+------------+
+| nama              | harga_jual |
++-------------------+------------+
+| Televisi 21 inchs |   50500000 |
+| Televisi 22 inc`  |   50500000 |
++-------------------+------------+
+2 rows in set (0.000 sec)
+
+MariaDB [db_tokoti05]> ORDER BY harga_jual DESC LIMIT 4;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY harga_jual DESC LIMIT 4' at line 1
+MariaDB [db_tokoti05]> SELECT nama, harga_jual FROM produk
+    -> ORDER BY harga_jual DESC LIMIT 4;
++-------------------+------------+
+| nama              | harga_jual |
++-------------------+------------+
+| Televisi 21 inchs |   50500000 |
+| Televisi 24 inc   |   50500000 |
+| Televisi 23 inc   |   50500000 |
+| Televisi 22 inc`  |   50500000 |
++-------------------+------------+
+4 rows in set (0.000 sec)
+
+MariaDB [db_tokoti05]> SELECT MAX(harga_jual) AS produk_Termahal From produk;
++-----------------+
+| produk_Termahal |
++-----------------+
+|        50500000 |
++-----------------+
+1 row in set (0.000 sec)
+
+MariaDB [db_tokoti05]> SELECT nama, MAX(harga_jual) AS produk_Termahal From produk;
++-------------------+-----------------+
+| nama              | produk_Termahal |
++-------------------+-----------------+
+| Televisi 21 inchs |        50500000 |
++-------------------+-----------------+
+1 row in set (0.000 sec)
+
+MariaDB [db_tokoti05]> SELECT * FROM pelanggan;
++----+-------+--------------------+----+------------+------------+----------------------+----------+
+| id | kode  | nama               | jk | tmp_lahir  | tgl_lahir  | email                | kartu_id |
++----+-------+--------------------+----+------------+------------+----------------------+----------+
+|  1 | C001  | Agung Sedayu Group | L  | Solo       | 2010-01-01 | sedayu@gmail.com     |        1 |
+|  2 | C002  | Pandan Wangi       | P  | Yogyakarta | 1950-01-01 | wangi@gmail.com      |        2 |
+|  3 | C003  | Sekar Mirah        | P  | Kediri     | 1983-02-20 | mirah@yahoo.com      |        1 |
+|  4 | C004  | Swandaru Geni      | L  | Kediri     | 1981-01-04 | swandaru@yahoo.com   |        4 |
+|  5 | C005  | Pradabashu         | L  | Pati       | 1985-04-02 | prada85@gmail.com    |        2 |
+|  6 | C006  | Gayatri Dwi        | P  | Jakarta    | 1987-11-28 | gaya87@gmail.com     |        1 |
+|  7 | C007  | Dewi Gyat          | P  | Jakarta    | 1988-12-01 | giyat@gmail.com      |        1 |
+|  8 | C008  | Andre Haru         | L  | Surabaya   | 1990-07-15 | andre.haru@gmail.com |        4 |
+|  9 | C009  | Ahmad Hasan        | L  | Surabaya   | 1992-10-15 | ahasan@gmail.com     |        4 |
+| 10 | C010  | Cassanndra         | P  | Belfast    | 1990-11-20 | casa90@gmail.com     |        1 |
+| 11 | K0010 | Andi Wijaya        | L  | Tangerang  | 2023-11-07 | andi@gmail.com       |        2 |
+| 12 | K0011 | Ira                | P  | Jakarta    | 2023-11-07 | ira@gmail.com        |        4 |
++----+-------+--------------------+----+------------+------------+----------------------+----------+
+12 rows in set (0.001 sec)
+
+MariaDB [db_tokoti05]> SELECT nama, tgl_lahir FROM pelanggan
+    -> WHERE tmp_lahir = 'jakarta';
++-------------+------------+
+| nama        | tgl_lahir  |
++-------------+------------+
+| Gayatri Dwi | 1987-11-28 |
+| Dewi Gyat   | 1988-12-01 |
+| Ira         | 2023-11-07 |
++-------------+------------+
+3 rows in set (0.001 sec)
+
+MariaDB [db_tokoti05]> SELECT kode, nama, harga_jual, stok FROM produk
+    ->     -> WHERE harga_jual > 10000000 AND stok > 5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-> WHERE harga_jual > 10000000 AND stok > 5' at line 2
+MariaDB [db_tokoti05]>
+MariaDB [db_tokoti05]> SELECT kode, nama, harga_jual, stok FROM produk
+    ->     -> WHERE harga_jual > 10000000 AND stok > 5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-> WHERE harga_jual > 10000000 AND stok > 5' at line 2
+MariaDB [db_tokoti05]> SELECT kode, nama, harga_jual, stok FROM produk
+    ->     -> WHERE harga_jual > 10000000 AND stok > 5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-> WHERE harga_jual > 10000000 AND stok > 5' at line 2
+MariaDB [db_tokoti05]> SELECT kode, nama, harga_jual, stok FROM produk
+    -> WHERE harga_jual > 10000000 AND stok > 5;
++------+-----------------+------------+------+
+| kode | nama            | harga_jual | stok |
++------+-----------------+------------+------+
+| AC01 | Notebook Acer S |   11232000 |    7 |
+| LN01 | Notebook Lenovo |   12480000 |    9 |
++------+-----------------+------------+------+
+2 rows in set (0.001 sec)
+
+MariaDB [db_tokoti05]>
